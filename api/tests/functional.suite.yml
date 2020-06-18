@@ -1,5 +1,11 @@
-suite_namespace: backend\tests\functional
+suite_namespace: api\tests\functional
 actor: FunctionalTester
 modules:
     enabled:
-        - Yii2
+        - REST:
+              depends: PhpBrowser
+              url: 'http://api.solar.local/index-test.php'
+              part: [json]
+        - Yii2:
+              part: [orm, fixtures]
+              entryScript: index-test.php

@@ -18,14 +18,14 @@ return [
         'request' => [
             'enableCookieValidation' => false,
             'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
+                'application/vnd.api+json' => 'tuyakhov\jsonapi\JsonApiParser',
             ],
         ],
         'response' => [
             'format' => Response::FORMAT_JSON,
             'formatters' => [
                 Response::FORMAT_JSON => [
-                    'class' => 'yii\web\JsonResponseFormatter',
+                    'class' => 'tuyakhov\jsonapi\JsonApiResponseFormatter',
                     'prettyPrint' => YII_DEBUG, // use "pretty" output in debug mode
                     'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
                 ],
@@ -49,9 +49,9 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'enableStrictParsing' => true,
+//            'enableStrictParsing' => true,
             'rules' => [
-                'GET api/v1/user/<id:\d+>' => 'v1/user/index'
+                'GET v1/user/<id:\d+>' => 'v1/user/index'
             ],
         ],
     ],

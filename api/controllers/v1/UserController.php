@@ -18,14 +18,15 @@ class UserController extends ApiController
      */
     public function actionIndex($id)
     {
-        $model = User::find()
-            ->where(['id' => Yii::$app->user->identity->getId()])
-            ->asArray()
-            ->one();
+        $model = User::findOne(Yii::$app->user->identity->getId());
 
         if ($model) {
             $this->response['success'] = true;
-            $this->response['data'] = $model;
+            $this->response['data'] = [
+                'id' => $model->id,
+                'username' => $model->username,
+                'email' => $model->email
+            ];
         } else {
             $this->response['success'] = false;
             $this->response['message'] = 'Пользователь не существует';

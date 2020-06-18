@@ -11,13 +11,14 @@ use Yii;
 
 class ApiController extends Controller
 {
+    public $serializer = 'tuyakhov\jsonapi\Serializer';
     public $response = [];
 
     public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['contentNegotiator']['formats'] = [];
-        $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
+        $behaviors['contentNegotiator']['formats']['application/vnd.api+json'] = Response::FORMAT_JSON;
 
         $behaviors['authenticator'] = [
             'class' => CompositeAuth::class,

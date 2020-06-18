@@ -49,7 +49,6 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-//            'enableStrictParsing' => true,
             'rules' => [
                 'GET v1/user/<id:\d+>' => 'v1/user/index'
             ],
